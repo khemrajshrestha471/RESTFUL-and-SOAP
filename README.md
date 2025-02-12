@@ -1,6 +1,6 @@
 # Express.js RESTful API for Basic Arithmetic Operations
 
-This code at index.js is a simple RESTful API built with Express.js that performs basic arithmetic operations such as addition, subtraction, multiplication, and division.
+This code at `index.js` is a simple RESTful API built with Express.js that performs basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
 ## Features
 
@@ -20,12 +20,12 @@ This code at index.js is a simple RESTful API built with Express.js that perform
 
 1. Clone the repository:
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/khemrajshrestha471/RESTFUL-and-SOAP.git
     ```
 
 2. Navigate to the project folder:
     ```bash
-    cd <project_folder>
+    cd RESTFUL-and-SOAP
     ```
 
 3. Install dependencies:
@@ -40,7 +40,7 @@ This code at index.js is a simple RESTful API built with Express.js that perform
 
 5. Start the server:
     ```bash
-    npm start
+    node index.js
     ```
 
 The server will be running at `http://localhost:3000` (or the port defined in your `.env` file).
@@ -60,16 +60,22 @@ The server will be running at `http://localhost:3000` (or the port defined in yo
 
 Example:
 
-GET /addition/5/7
- And the response will be
+GET `/addition/5/7` <br />
+And the response will be
 
+```bash
 {
   "result": "Addition of 5 and 7 is 12"
 }
+```
 
+Similarly, 
 
+GET `/subtraction/5/7` <br />
+GET `/multiplication/5/7` <br />
+GET `/division/5/7` <br />
 
-....................................................................................................................
+........................................................................................................................................................................................................................................
 
 
 # Express.js SOAP API for Basic Arithmetic Operations
@@ -77,7 +83,7 @@ GET /addition/5/7
 
 # SOAP Math Service
 
-This repository provides a simple SOAP-based Math Service with operations for basic arithmetic functions. The service includes the following operations:
+The code at `server.js` provides a simple SOAP-based Math Service with operations for basic arithmetic functions. The service includes the following operations:
 
 - Addition
 - Subtraction
@@ -97,15 +103,17 @@ Follow these steps to get the project running locally:
 
 1. Clone this repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/khemrajshrestha471/RESTFUL-and-SOAP.git
+   cd RESTFUL-and-SOAP
+    ```
 
-Start the server and it will show 
+Start the server and it will show <br />
 
-SOAP server listening on http://localhost:4000/wsdl
+`SOAP server listening on http://localhost:4000/wsdl`
 
-At postman, make it POST request and in header section, add content-type = text/xml and in body section choose raw option and XML format and paste the below body part.
+At postman, make it `POST` request and in header section add `content-type = text/xml` and in body section choose `raw` option and `XML` format and paste the below body part.
 
+```bash
 <?xml version="1.0"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://example.com/math">
    <soapenv:Body>
@@ -115,10 +123,11 @@ At postman, make it POST request and in header section, add content-type = text/
       </tns:DivisionRequest>
    </soapenv:Body>
 </soapenv:Envelope>
+```
 
+After that when you sent the POST request, the response should be
 
-and when you sent the request, the response should be
-
+```bash
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:tns="http://example.com/math">
     <soap:Body>
@@ -127,5 +136,6 @@ and when you sent the request, the response should be
         </tns:DivisionResponse>
     </soap:Body>
 </soap:Envelope>
+```
 
-And so on for Subtraction, Multiplication and Division
+And so on for Subtraction, Multiplication and Division.
