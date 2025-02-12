@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MathService"
+    targetNamespace="http://example.com/math"
+    xmlns:tns="http://example.com/math"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <schema targetNamespace="http://example.com/math"
+            xmlns="http://www.w3.org/2001/XMLSchema">
+            <element name="AdditionRequest">
+                <complexType>
+                    <sequence>
+                        <element name="num1" type="xsd:decimal"/>
+                        <element name="num2" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="AdditionResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="SubtractionRequest">
+                <complexType>
+                    <sequence>
+                        <element name="num1" type="xsd:decimal"/>
+                        <element name="num2" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="SubtractionResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="MultiplicationRequest">
+                <complexType>
+                    <sequence>
+                        <element name="num1" type="xsd:decimal"/>
+                        <element name="num2" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="MultiplicationResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="DivisionRequest">
+                <complexType>
+                    <sequence>
+                        <element name="num1" type="xsd:decimal"/>
+                        <element name="num2" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="DivisionResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="xsd:decimal"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+    <message name="AdditionRequest">
+        <part name="parameters" element="tns:AdditionRequest"/>
+    </message>
+    <message name="AdditionResponse">
+        <part name="parameters" element="tns:AdditionResponse"/>
+    </message>
+    <message name="SubtractionRequest">
+        <part name="parameters" element="tns:SubtractionRequest"/>
+    </message>
+    <message name="SubtractionResponse">
+        <part name="parameters" element="tns:SubtractionResponse"/>
+    </message>
+    <message name="MultiplicationRequest">
+        <part name="parameters" element="tns:MultiplicationRequest"/>
+    </message>
+    <message name="MultiplicationResponse">
+        <part name="parameters" element="tns:MultiplicationResponse"/>
+    </message>
+    <message name="DivisionRequest">
+        <part name="parameters" element="tns:DivisionRequest"/>
+    </message>
+    <message name="DivisionResponse">
+        <part name="parameters" element="tns:DivisionResponse"/>
+    </message>
+
+    <portType name="MathPort">
+        <operation name="Addition">
+            <input message="tns:AdditionRequest"/>
+            <output message="tns:AdditionResponse"/>
+        </operation>
+        <operation name="Subtraction">
+            <input message="tns:SubtractionRequest"/>
+            <output message="tns:SubtractionResponse"/>
+        </operation>
+        <operation name="Multiplication">
+            <input message="tns:MultiplicationRequest"/>
+            <output message="tns:MultiplicationResponse"/>
+        </operation>
+        <operation name="Division">
+            <input message="tns:DivisionRequest"/>
+            <output message="tns:DivisionResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="MathBinding" type="tns:MathPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Addition">
+            <soap:operation soapAction="http://example.com/math#Addition"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Subtraction">
+            <soap:operation soapAction="http://example.com/math#Subtraction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Multiplication">
+            <soap:operation soapAction="http://example.com/math#Multiplication"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Division">
+            <soap:operation soapAction="http://example.com/math#Division"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="MathService">
+        <port name="MathPort" binding="tns:MathBinding">
+            <soap:address location="http://localhost:4000/wsdl"/>
+        </port>
+    </service>
+</definitions>
